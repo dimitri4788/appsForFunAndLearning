@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="application-name" content="Quick Notes">
+        <meta name="description" content="A timer application">
+        <meta name="keywords" content="HTML,CSS,JavaScript,Timer,Count-Down">
+        <meta name="author" content="Deep Aggarwal">
+        <title>Timer</title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <link type="text/css" href="style.css" rel="stylesheet" />
+    </head>
+
+    <body>
+        <div id="container">
+            <header id="header">
+                <h1>Timer</h1>
+            </header>
+
+            <!-- Time inputs -->
+            <div id="inputs">
+                <div contenteditable="true" id="mins" class="timer">0</div>
+                <div class="timeUnit">min</div>
+                <div contenteditable="true" id="secs" class="timer">0</div>
+                <div class="timeUnit">sec</div>
+            </div>
+
+            <!-- Buttons to control start and stop of timer -->
+            <div id="buttons">
+                <input id="start" type="submit" value="Start">
+                <input id="stop" type="submit" value="Stop">
+            </div>
+
+            <!-- Error message holder -->
+            <div id="errorMessage" hidden>Please enter time in minutes and/or seconds.</div>
+
+            <footer id="footer">
+                <address>
+                    <p><a href="https://github.com/deep4788/appsForFunAndLearning">GitHub</a></p>
+                </address>
+            </footer>
+        </div>
+
+        <!-- Add the index.js script -->
+        <script type="text/javascript" src="app.js"></script>
+    </body>
+</html>
