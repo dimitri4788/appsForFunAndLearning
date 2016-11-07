@@ -1,0 +1,87 @@
+/* Whole container */
+#container {
+    width: 400px;
+    margin: auto;
+    border: 3px solid #22313F;
+    border-radius: 25px;
+    border-width: 5px;
+    padding: 10px 10px 10px 10px;
+    text-align: center;
+}
+
+/* Header */
+#header {
+    background-color: #3A539B;
+    border-radius: 25px;
+    color: #AEA8D3;
+    text-align: center;
+    margin: 5px 55px 20px 55px;
+}
+
+#header h1 {
+    margin: 10px;
+    padding: 10px;
+}
+
+/* Timer */
+#inputs{
+    margin-left: 155px;
+    margin-right: auto;
+}
+
+.timer {
+    float: left;
+    font-size: 50px;
+}
+
+.timeUnit {
+    float: left;
+    font-size: 24px;
+}
+
+/* Buttons: Start and Stop */
+#inButtons {
+    clear: left;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
+.button {
+    color: #F2F1EF;
+    font-size: 18px;
+    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+    width: 100px;
+    height: 45px;
+    cursor: pointer;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 6px;
+}
+
+#start {
+    background-color: #4DAF7C;
+}
+
+#stop {
+    background-color: #7f8c8d;
+}
+
+/* Error Message */
+#errorMessage {
+    clear: left;
+    text-align: center;
+    margin-top: 14px;
+    font-size: 15px;
+    color: #6C7A89;
+}
+
+/* Footer */
+#footer {
+    clear: left;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 11px;
+    color: #666666;
+}

@@ -1,6 +1,6 @@
 Apps in JavaScript
 ==================
 
-- [Timer](TODO)
+- [Timer](https://github.com/deep4788/appsForFunAndLearning/tree/master/timer)
 - Email Parser
 - Web Scraper
