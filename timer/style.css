@@ -25,7 +25,7 @@
 
 /* Timer */
 #inputs{
-    margin-left: 155px;
+    margin-left: 140px;
     margin-right: auto;
 }
 
@@ -36,7 +36,14 @@
 
 .timeUnit {
     float: left;
+    padding-top: 22px;
+    padding-right: 14px;
     font-size: 24px;
+}
+
+.inputNumber {
+    font-size: 40px;
+    width: 50px;
 }
 
 /* Buttons: Start and Stop */

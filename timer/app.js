@@ -58,10 +58,36 @@ var timer = {
     }
 };
 
+function createInputField() {
+    return function() {
+        $(this).html(
+            $('<input>')
+            .attr('type','text')
+            .attr('size','2')
+            .attr('maxlength','2')
+            .attr('class','inputNumber')
+            .val($(this).text())
+        );
+
+        //Put focus on this newly created input element
+        $('input', this).focus();
+
+        //This blur code executes when input element loses focus (such has by clicking on somwhere else on the document)
+        $('input', this).blur(function() {
+            var val = $(this).val();
+            //Insert the entered value after this input element, then remove the input element and
+            //  unbind event handlers from it. We can use jQuery chaining also here: $(this).after(...).remove().unbind()
+            $(this).after(parseInt(val));
+            $(this).remove();
+            $(this).unbind();
+        });
+    }
+}
+
 function main() {
-    $(".timer").click(function() { $("#errorMessage").hide(); });
     $("#start").click(function() { timer.countState ? timer.pause() : timer.start(); });
     $("#stop").click(function() { timer.stop(); });
+    $(".timer").click(createInputField());
 }
 
 $(document).ready(main());
