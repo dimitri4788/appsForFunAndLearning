@@ -1,0 +1,78 @@
+#container {
+    width: 278px;
+    height: 370px;
+    margin: auto;
+    border: 5px solid #22313F;
+    border-width: 3px;
+    border-radius: 8px;
+    border-color: #E08283;
+    text-align: center;
+    background: #F1A9A0;
+}
+
+#header h1 {
+    font-size: 41px; font-family: Papyrus, fantasy; margin-top: 5px; margin-bottom: 5px;
+    color: #336E7B;
+}
+
+#display {
+    width: auto;
+    margin: auto;
+}
+
+/* Top portion */
+#display #clear {
+    float: left;
+    height: 40px;
+    width: 62px;
+    text-align: center;
+    cursor: pointer;
+    background: #DB0A5B;
+    border-radius: 3px;
+    margin: 0px 6px 15px 6px;
+    color: #F1A9A0;
+    line-height: 40px;
+    transition: all 0.2s;
+}
+
+/* Inset shadow on the screen to create indent */
+#display #output {
+    float: right;
+    height: 40px;
+    width: 198px;
+    margin: 0px 6px 15px 0px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    box-shadow: inset 0px 4px rgba(255, 0, 0, 0.1);
+    color: #22313F;
+    font-size: 22px;
+    line-height: 40px;
+    text-align: right;
+    letter-spacing: 1px;
+}
+
+#inputPad, #footer {
+    clear: both;
+}
+
+.digit, .operator, #decimal, #equal {
+    float: left;
+    height: 40px;
+    width: 62px;
+    text-align: center;
+    cursor: pointer;
+    background: #DB0A5B;
+    border-radius: 3px;
+    margin: 0px 0px 15px 6px;
+    color: #F1A9A0;
+    line-height: 40px;
+    transition: all 0.2s;
+}
+
+/* Footer */
+#footer {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 11px;
+    color: #666666;
+}
