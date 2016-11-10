@@ -2,12 +2,11 @@
 var Operation = {
     //Public method
     perform: function(left, right, operation) {
-        console.log("left and right: " + left + right);
+        //Convert string values to float
         var first = parseFloat(left);
         var second = parseFloat(right);
         switch(operation) {
             case "+":
-                console.log("first and second: " + first + second);
                 return this.add(first, second);
                 break;
             case "-":
@@ -38,7 +37,7 @@ var Operation = {
     }
 };
 
-//Screen object held by calculator object
+//Screen object
 var Screen = {
     //Update the screen
     insert: function(value) {
@@ -69,6 +68,7 @@ var Calculator = {
             this.operandMemory = "";
         }
         else {
+            //Keep appending digits and a decimal as long as the user is pressing it
             this.operandMemory += value;
         }
     },
@@ -80,15 +80,17 @@ var Calculator = {
             this.operands.push(this.operandMemory);
         }
 
-        console.log("check1");
+        //Perform the arithematic operation
         for(var i = 0; i < this.operators.length; i++) {
             var result = Operation.perform(this.operands.shift(), this.operands.shift(), this.operators[i]);
-            console.log("check2: " + result);
+            result = result.toFixed(2);
         }
+
+        //Clear the screen and display the result
         Screen.clear();
         Screen.insert(result);
 
-        //Store result
+        //Clear the arrays and store result into operandMemory
         this.operands = [];
         this.operators = [];
         this.operandMemory = result;
