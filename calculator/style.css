@@ -1,3 +1,7 @@
+body {
+    background: #2C3E50;
+}
+
 #container {
     width: 278px;
     height: 370px;
@@ -11,8 +15,13 @@
 }
 
 #header h1 {
-    font-size: 41px; font-family: Papyrus, fantasy; margin-top: 5px; margin-bottom: 5px;
+    font-size: 41px;
+    font-family: Papyrus, fantasy; margin-top: 5px; margin-bottom: 5px;
     color: #336E7B;
+}
+
+#header h1:hover {
+    text-shadow: 1px 1px rgba(0,0,0,0.8);
 }
 
 #display {
@@ -20,11 +29,8 @@
     margin: auto;
 }
 
-/* Top portion */
-#display #clear {
-    float: left;
-    height: 40px;
-    width: 62px;
+#display #clear, .digit, .operator, #decimal, #equal {
+    float: left; height: 40px; width: 62px;
     text-align: center;
     cursor: pointer;
     background: #DB0A5B;
@@ -32,10 +38,26 @@
     margin: 0px 6px 15px 6px;
     color: #F1A9A0;
     line-height: 40px;
-    transition: all 0.2s;
+    transition: all 0.6s; /* We can apply transition to individual properties as well, e.g. transition: color 0.3s */
+    box-shadow: 0 5px 5px -4px rgba(0,0,0,0.8);
+    user-select: none;
 }
 
-/* Inset shadow on the screen to create indent */
+#display #clear, #equal {
+    background: #674172;
+}
+
+#inputPad .button:hover, #display #clear:hover {
+    color: #000000;
+    border-radius: 13px;
+}
+
+#inputPad .button:active, #clear:active {
+    box-shadow: 0px 0px #6b54d3;
+    position: relative;
+    top: 5px;
+}
+
 #display #output {
     float: right;
     height: 40px;
@@ -45,10 +67,13 @@
     border-radius: 3px;
     box-shadow: inset 0px 4px rgba(255, 0, 0, 0.1);
     color: #22313F;
-    font-size: 22px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
     line-height: 40px;
     text-align: right;
     letter-spacing: 1px;
+    overflow: hidden;
 }
 
 #inputPad, #footer {
@@ -56,20 +81,9 @@
 }
 
 .digit, .operator, #decimal, #equal {
-    float: left;
-    height: 40px;
-    width: 62px;
-    text-align: center;
-    cursor: pointer;
-    background: #DB0A5B;
-    border-radius: 3px;
     margin: 0px 0px 15px 6px;
-    color: #F1A9A0;
-    line-height: 40px;
-    transition: all 0.2s;
 }
 
-/* Footer */
 #footer {
     text-align: center;
     margin-top: 10px;
