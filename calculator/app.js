@@ -56,7 +56,6 @@ var Calculator = {
     operands: [],
     operators: [],
     operandMemory: "",
-    //operatorMemory: "",
 
     //Store digit, decimal or operator pressed
     storeValue: function(value) {
@@ -68,7 +67,6 @@ var Calculator = {
             this.operands.push(this.operandMemory);
             this.operators.push(value);
             this.operandMemory = "";
-            //this.operatorMemory = "";
         }
         else {
             this.operandMemory += value;
@@ -89,6 +87,11 @@ var Calculator = {
         }
         Screen.clear();
         Screen.insert(result);
+
+        //Store result
+        this.operands = [];
+        this.operators = [];
+        this.operandMemory = result;
     },
 
     //Reset calculator
@@ -96,7 +99,6 @@ var Calculator = {
         this.operands = [];
         this.operators = [];
         this.operandMemory = "";
-        this.operatorMemory = "";
         Screen.clear();
     }
 };
