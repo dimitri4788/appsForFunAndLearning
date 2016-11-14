@@ -1,3 +1,8 @@
+//Utility function; isNaN() has issues so we will write our own
+function isNotANumber(num) {
+    return num !== num;
+}
+
 //Timer object
 var timer = {
     countState: false,
@@ -5,11 +10,13 @@ var timer = {
     //The function starts the count-down
     start: function() {
         //Get the minutes and seconds entered as inputs
-        var timeInSeconds = (isNaN(parseInt($("#mins").text(), 10)*60) ? 0 : parseInt($("#mins").text(), 10)*60) +
-                            (isNaN(parseInt($("#secs").text(), 10)) ? 0 : parseInt($("#secs").text(), 10));
+        var timeInSeconds = (isNotANumber(parseInt($("#mins").text(), 10)*60) ? 0 : parseInt($("#mins").text(), 10)*60) +
+                            (isNotANumber(parseInt($("#secs").text(), 10)) ? 0 : parseInt($("#secs").text(), 10));
 
         //Make sure the minutes and/or seconds are entered, else show error message
         if(timeInSeconds === 0) {
+            $('#mins').text("0");
+            $('#secs').text("0");
             $("#errorMessage").show();
             return;
         }
@@ -77,7 +84,7 @@ function createInputField() {
             var val = $(this).val();
             //Insert the entered value after this input element, then remove the input element and
             //  unbind event handlers from it. We can use jQuery chaining also here: $(this).after(...).remove().unbind()
-            $(this).after(parseInt(val));
+            $(this).after(isNotANumber(parseInt(val)) ? 0 : parseInt(val));
             $(this).remove();
             $(this).unbind();
         });
