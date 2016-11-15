@@ -12,6 +12,9 @@ var gameImages = [
     "images/ten.png"
 ];
 
+//A counter to keep track of number of clicks
+var counter = 0;
+
 //This function initializes the game board
 function initializeGameBoard() {
     //Remove all child images of #gameBoardHalloweenImages
@@ -20,7 +23,6 @@ function initializeGameBoard() {
     //Fill #gameBoardHalloweenImages with images
     for(var j = 0; j < 2; ++j) {
         for(var i = 0; i < gameImages.length; ++i) {
-            console.log("gameImages[]: " + gameImages[i]);
             $("#gameBoardHalloweenImages").append('<div id="'+j+i+'"><img src='+gameImages[i]+'></div>');
         }
     }
@@ -28,28 +30,53 @@ function initializeGameBoard() {
 
 //Reset the game
 function resetGame() {
-    //Reset the score
+    //Set counter back to zero
+    counter = 0;
+
+    //Reset the counter (# turns) display
     $("#score").text("0");
 
-    //Initialize the game board
-    initializeGameBoard();
-
     //Shuffle the images
-    //shuffleImages(); TODO
+    shuffleImages();
+
+    //Hide all the images that may be open
+	$("#gameBoardHalloweenImages div img").hide();
+
+    //Make all the divs inside #gameBoardHalloweenImages visible
+	$("#gameBoardHalloweenImages div").css("visibility", "visible");
 }
 
+//This function show the image when it is clicked
+function showImage() {
+    var imageId = $(this).attr("id");
+    console.log("imageId: " + imageId);
+
+	if($("#" + imageId + " img").is(":hidden")) {
+        //Remove the attached event handler from the divs children of #gameBoardHalloweenImages
+		$("#gameBoardHalloweenImages div").unbind("click", showImage);
+
+        //Show the image in 0.5 second duration
+		$("#" + imageId + " img").slideDown(500);
+    }
+}
+
+//This functions shuffles the images on the board
+function shuffleImages() {
+    //TODO
+    console.log("TODO");
+}
+
+//Magic starts here
 function main() {
+    //Initialize the board
     initializeGameBoard();
-    //#().click();
+
+    //Bind event handlers to the "click" event
+	$("#gameBoardHalloweenImages div").click(showImage);
     $("#resetButton").click(resetGame);
+
+    //Shuffle the images
+    shuffleImages();
 }
 
 $(document).ready(main());
-
-/*
-<div id="gameBoard">
-<div class="gameControllerAndStats">
-<span id="scoreData">Score: <output name="score" id="score">0</output></span>
-<span id="resetButton">RESET</span>
-<div id="gameBoardHalloweenImages"></div>
-*/

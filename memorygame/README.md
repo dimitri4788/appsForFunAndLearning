@@ -1,5 +1,5 @@
-Memory Game
-===========
+Halloween Memory Game
+=====================
 [JSFiddle](TODO)
 
 Screenshot
