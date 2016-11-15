@@ -4,7 +4,7 @@
     height: 655px;
     margin: auto;
     border: 3px solid #3b3a36;
-    border-radius: 25px;
+    border-radius: 8px;
     border-width: 5px;
     padding: 10px 10px 10px 10px;
     text-align: center;
@@ -14,10 +14,11 @@
 /* Header */
 #header {
     background-color: #3b3a36;
-    border-radius: 25px;
+    border-radius: 8px;
     color: #c0dfd9;
     text-align: center;
-    margin: 5px 55px 20px 55px;
+	width: 260px;
+    margin: auto;
 }
 
 #header h1 {
