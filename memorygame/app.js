@@ -1,5 +1,7 @@
+"use strict";
+
 //An array of images for the game
-var gameImages = [
+const gameImages = [
     "images/one.png",
     "images/two.png",
     "images/three.png",
@@ -12,71 +14,123 @@ var gameImages = [
     "images/ten.png"
 ];
 
-//A counter to keep track of number of clicks
-var counter = 0;
+//Image object
+function Image(id, name) {
+    this._id = id;
+    this._name = name;
 
-//This function initializes the game board
-function initializeGameBoard() {
-    //Remove all child images of #gameBoardHalloweenImages
-    $("#gameBoardHalloweenImages").empty();
+    //Show the image
+    this.show = function() {
+        $("#" + this._id + " img").slideDown(300);
+    };
 
-    //Fill #gameBoardHalloweenImages with images
-    for(var j = 0; j < 2; ++j) {
-        for(var i = 0; i < gameImages.length; ++i) {
-            $("#gameBoardHalloweenImages").append('<div id="'+j+i+'"><img src='+gameImages[i]+'></div>');
+    //Hide the image
+    this.hide = function() {
+        $("#" + this._id + " img").slideUp(300);
+    };
+}
+
+//Board object
+function Board(parentDivId) {
+    //A counter to keep track of number of clicks
+    this._clickscounter = 0;
+
+    //A dictionary to hold => key: image-id and value: Image() object
+    this._imageObjects = {};
+
+    //An array of Image() objects
+    this._imagesArray = [];
+
+    //Images parent div id
+    this._parentDivId = parentDivId;
+
+    //This function initializes the game board
+    this.initialize = function() {
+        //Create all the Image() objects and store them in this._imageObjects
+        var imageObj;
+        for(var j = 0; j < 2; ++j) {
+            for(var i = 0; i < gameImages.length; ++i) {
+                imageObj = new Image((""+j+i), gameImages[i]);
+                this._imageObjects[(""+j+i)] = imageObj;
+                this._imagesArray.push(imageObj);
+            }
         }
-    }
-}
 
-//Reset the game
-function resetGame() {
-    //Set counter back to zero
-    counter = 0;
+        //Fill the board with images
+        this.fillBoardWithImages();
 
-    //Reset the counter (# turns) display
-    $("#score").text("0");
+        //Shuffle the images
+        this.shuffleImages();
+    };
 
-    //Shuffle the images
-    shuffleImages();
+    //Fill the board with images
+    this.fillBoardWithImages = function() {
+        var imageObj;
+        for(var i = 0; i < this._imagesArray.length; ++i) {
+            imageObj = this._imagesArray[i];
+            $("#" + this._parentDivId).append('<div id="'+imageObj._id+'"><img src='+imageObj._name+'></div>');
+        }
+    };
 
-    //Hide all the images that may be open
-	$("#gameBoardHalloweenImages div img").hide();
+    //This function resets the game board
+    this.reset = function() {
+        console.log("deeeepd: ");
+        //Set counter back to zero
+        this._clickscounter = 0;
 
-    //Make all the divs inside #gameBoardHalloweenImages visible
-	$("#gameBoardHalloweenImages div").css("visibility", "visible");
-}
+        //Reset the counter (# turns) display
+        $("#score").text("0");
 
-//This function show the image when it is clicked
-function showImage() {
-    var imageId = $(this).attr("id");
-    console.log("imageId: " + imageId);
+        //Hide the images
+        $("#" + this._parentDivId + " div img").hide();
 
-	if($("#" + imageId + " img").is(":hidden")) {
-        //Remove the attached event handler from the divs children of #gameBoardHalloweenImages
-		$("#gameBoardHalloweenImages div").unbind("click", showImage);
+        //Shuffle the images and fill the board again
+        this.shuffleImages();
+    };
 
-        //Show the image in 0.5 second duration
-		$("#" + imageId + " img").slideDown(500);
-    }
-}
+    //This function gets called when the div (containing image) is clicked
+    this.divClicked = function(divElement) {
+        var imageId = divElement.attr("id");
+        console.log("divElement: " + JSON.stringify(divElement)); //XXX
 
-//This functions shuffles the images on the board
-function shuffleImages() {
-    //TODO
-    console.log("TODO");
+        //Get the image object
+        var imageObj = this._imageObjects[imageId];
+        //console.log("imageObj: " + JSON.stringify(imageObj)); //XXX
+
+        if($("#" + imageObj._id + " img").is(":hidden")) {
+            //Remove the attached event handler from the divs children
+            $("#" + this._parentDivId + " div").unbind("click", this.divClicked);
+
+            //Show the image
+            imageObj.show();
+
+            //Show the image in 0.5 second duration
+            //$("#" + imageId + " img").slideDown(300);
+        }
+    };
+
+    //This function performs random shuffling of the images
+    this.shuffleImages = function() {
+        var parentDiv = $("#" + this._parentDivId);
+        var childrenDivs = parentDiv.children();
+        while(childrenDivs.length) {
+            parentDiv.append(childrenDivs.splice(Math.floor(Math.random() * childrenDivs.length), 1)[0]);
+        }
+    };
 }
 
 //Magic starts here
 function main() {
     //Initialize the board
-    initializeGameBoard();
+    var board = new Board("gameBoardHalloweenImages");
+    board.initialize();
 
     //Bind event handlers to the "click" event
-	$("#gameBoardHalloweenImages div").click(showImage);
-    $("#resetButton").click(resetGame);
+	$("#gameBoardHalloweenImages div").click(function() { board.divClicked($(this)); });
+    $("#resetButton").click(function() { board.reset(); });
 
     //Shuffle the images
-    shuffleImages();
+    //shuffleImages();
 }
 
 $(document).ready(main());
