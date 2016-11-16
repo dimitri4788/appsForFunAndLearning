@@ -119,6 +119,7 @@ function Board(parentDivId) {
             this._clickscounter++;
             $("#score").text(this._clickscounter);
 
+            //Check if the # of images guessed is the total # of images
             if(numOfImagesFound === gameImages.length) {
                 $("#result").text("It took you " + this._clickscounter + " guesses");
                 prevImage = null;

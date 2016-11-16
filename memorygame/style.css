@@ -17,7 +17,7 @@
     border-radius: 7px;
     color: #c0dfd9;
     text-align: center;
-	width: 420px;
+    width: 420px;
     margin: auto;
     user-select: none;
 }
@@ -29,7 +29,7 @@
 
 /* Controllers and Stats */
 .gameControllerAndStats {
-	margin: 3px;
+    margin: 3px;
     display: block;
     font-weight: bold;
     font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
@@ -58,9 +58,9 @@
 }
 
 .gameControllerAndStats #resetButton, #scoreData {
-	width: 100px;
+    width: 100px;
     background: #9fa8a3;
-	border: 2px solid #3b3a36;
+    border: 2px solid #3b3a36;
     border-radius: 7px;
 }
 
@@ -75,19 +75,19 @@
 }
 
 #gameBoardHalloweenImages div {
-	float: left;
-	z-index: 2;
-	width: 100px;
-	height: 100px;
-	margin: 3px;
+    float: left;
+    z-index: 2;
+    width: 100px;
+    height: 100px;
+    margin: 3px;
     background: #b3c2bf;
-	border: 2px solid #3b3a36;
+    border: 2px solid #3b3a36;
     border-radius: 7px;
 }
 
 #gameBoardHalloweenImages div img {
-	display: none;
-	z-index: 3;
+    display: none;
+    z-index: 3;
     border-radius: 7px;
 }
 
