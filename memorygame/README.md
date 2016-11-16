@@ -1,7 +1,7 @@
 Halloween Memory Game
 =====================
-[JSFiddle](TODO)
 
 Screenshot
 ----------
 ![](images/appImage.png)
+![](images/appImage2.png)
