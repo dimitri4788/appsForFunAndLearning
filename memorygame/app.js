@@ -14,6 +14,10 @@ const gameImages = [
     "images/ten.png"
 ];
 
+//Variables to maintain state
+var prevImage = null;
+var numOfImagesFound = 0;
+
 //Image object
 function Image(id, name) {
     this._id = id;
@@ -38,9 +42,6 @@ function Board(parentDivId) {
     //A dictionary to hold => key: image-id and value: Image() object
     this._imageObjects = {};
 
-    //An array of Image() objects
-    this._imagesArray = [];
-
     //Images parent div id
     this._parentDivId = parentDivId;
 
@@ -52,37 +53,32 @@ function Board(parentDivId) {
             for(var i = 0; i < gameImages.length; ++i) {
                 imageObj = new Image((""+j+i), gameImages[i]);
                 this._imageObjects[(""+j+i)] = imageObj;
-                this._imagesArray.push(imageObj);
+                $("#" + this._parentDivId).append('<div id="'+imageObj._id+'"><img src='+imageObj._name+'></div>');
             }
         }
-
-        //Fill the board with images
-        this.fillBoardWithImages();
 
         //Shuffle the images
         this.shuffleImages();
     };
 
-    //Fill the board with images
-    this.fillBoardWithImages = function() {
-        var imageObj;
-        for(var i = 0; i < this._imagesArray.length; ++i) {
-            imageObj = this._imagesArray[i];
-            $("#" + this._parentDivId).append('<div id="'+imageObj._id+'"><img src='+imageObj._name+'></div>');
-        }
-    };
-
     //This function resets the game board
     this.reset = function() {
-        console.log("deeeepd: ");
         //Set counter back to zero
         this._clickscounter = 0;
 
         //Reset the counter (# turns) display
         $("#score").text("0");
 
-        //Hide the images
+        //Hide the images and make their parent divs visible
         $("#" + this._parentDivId + " div img").hide();
+        $("#" + this._parentDivId + " div").css("visibility", "visible");
+
+        //Reset the state variables
+        prevImage = null;
+        numOfImagesFound = 0;
+
+        //Reset the result element
+        $("#result").text("");
 
         //Shuffle the images and fill the board again
         this.shuffleImages();
@@ -91,21 +87,43 @@ function Board(parentDivId) {
     //This function gets called when the div (containing image) is clicked
     this.divClicked = function(divElement) {
         var imageId = divElement.attr("id");
-        console.log("divElement: " + JSON.stringify(divElement)); //XXX
 
         //Get the image object
-        var imageObj = this._imageObjects[imageId];
-        //console.log("imageObj: " + JSON.stringify(imageObj)); //XXX
+        var currImage = this._imageObjects[imageId];
 
-        if($("#" + imageObj._id + " img").is(":hidden")) {
-            //Remove the attached event handler from the divs children
-            $("#" + this._parentDivId + " div").unbind("click", this.divClicked);
-
+        if($("#" + currImage._id + " img").is(":hidden")) {
             //Show the image
-            imageObj.show();
+            currImage.show();
 
-            //Show the image in 0.5 second duration
-            //$("#" + imageId + " img").slideDown(300);
+            if(prevImage === null) {
+                prevImage = currImage;
+            }
+            else {
+                if(prevImage._name !== currImage._name) {
+                    setTimeout(function() {
+                        prevImage.hide();
+                        currImage.hide();
+                        prevImage = null;
+                    }, 300);
+                }
+                else {
+                    //If the prevImage and currImage are same, then hide their parent div
+                    $("#" + prevImage._id + " img").parent().css("visibility", "hidden");
+                    $("#" + currImage._id + " img").parent().css("visibility", "hidden");
+                    numOfImagesFound++;
+                    prevImage = null;
+                }
+            }
+
+            //Increase the counter and update the counter display on board
+            this._clickscounter++;
+            $("#score").text(this._clickscounter);
+
+            if(numOfImagesFound === gameImages.length) {
+                $("#result").text("It took you " + this._clickscounter + " guesses");
+                prevImage = null;
+                numOfImagesFound = 0;
+            }
         }
     };
 
@@ -126,11 +144,8 @@ function main() {
     board.initialize();
 
     //Bind event handlers to the "click" event
-	$("#gameBoardHalloweenImages div").click(function() { board.divClicked($(this)); });
+    $("#gameBoardHalloweenImages div").click(function() { board.divClicked($(this)); });
     $("#resetButton").click(function() { board.reset(); });
-
-    //Shuffle the images
-    //shuffleImages();
 }
 
 $(document).ready(main());

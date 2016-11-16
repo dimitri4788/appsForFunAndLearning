@@ -43,6 +43,12 @@
     padding-bottom: 7px;
 }
 
+.gameControllerAndStats #result {
+    text-align: center;
+    font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+    font-size: 22px;
+}
+
 .gameControllerAndStats #resetButton {
     float: right;
     cursor: pointer;
