@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="application-name" content="Mastermind Game">
+        <meta name="description" content="A classic mastermind game">
+        <meta name="keywords" content="HTML,CSS,JavaScript,Mastermind,Game,Puzzle">
+        <meta name="author" content="Deep Aggarwal">
+        <title>Mastermind Game</title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <link type="text/css" href="style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <main id="container">
+            <!-- Game board -->
+            <table class="game-board">
+                <tr>
+                    <td>
+                        <table class="inner-input-table">
+                        </table>
+                    </td>
+                    <td>
+                        <div id="game-title-box">
+                            <div id="game-title">
+                                MASTERMIND
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="how-to-play-descp">
+                <p>This is a classic <a target="_blank" href="https://en.wikipedia.org/wiki/Mastermind_(board_game)">Mastermind Game</a>.
+                <p>The objective of the game is to guess a 4-digit number.</p>
+                <p>For each of your guess that is the correct number and in the correct position in the code sequence, the game displays a green color on the right side of the current guess.</p>
+                <p>For each of your guess that is the correct number but is NOT in the correct position in the code sequence, the game displays a red color on the right side of the current guess.</p>
+                <p>For example: if the code sequence is <span class="how-to-code-sequence">3425</span>, and your guess is <span class="how-to-your-guess">4395</span>, then the game will display <div class="out-green"></div><div class="out-red"></div><div class="out-red"></div><div class="out-white"></div></p>
+            </div>
+
+            <div class="game-functions">
+                <a href="#" class="how-to-play">How to play?</a>
+                <div class="controller">
+                    <span class="reset-game">RESET</span>
+                    <span class="start-game">START</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- Add the app.js script -->
+        <script type="text/javascript" src="app.js"></script>
+    </body>
+</html>
