@@ -1,6 +1,6 @@
 //This functions initializes the board
 var initializeBoard = function initializeBoard() {
-    var numberOfInputFields = 15;
+    var numberOfInputFields = 20;
     var innerElement;
 
     var $inputTable = $(".inner-input-table");

@@ -1,47 +1,38 @@
 /* Remove underline for all anchors */
 a {
     text-decoration: none;
+    color: #2c3e50;
 }
 
 /* Whole container */
 #container {
     width: 188px;
-    height: 600px;
+    height: 610px;
     margin: auto;
     border: 0px solid #ce8e68;
     border-radius: 7px;
-    padding: 10px 10px 10px 10px;
+    padding: 10px;
     text-align: center;
     background: #ce8e68;
 }
 
 /* Game title */
 #game-title-box {
-    width: 80px;
-    height: 600px;
+    width: 208px;
+    height: 33px;
+    margin: auto;
     background-color: #67d8aa;
     color: #c0dfd9;
+    border-radius: 5px;
     text-align: center;
-    border-radius: 7px;
-}
-
-#game-title {
-    float: right;
-    position: relative;
-    top: -85px;
-    left: 2px;
-    transform: rotate(-90deg);
-    transform-origin: 100% 100%;
-    letter-spacing: 8px;
-    font-size: 87px;
+    letter-spacing: 3px;
+    font-size: 29px;
     font-family: "Courier New", Courier, monospace;
-    line-height: 80px;
 }
 
-/* Game table */
+/* Game board */
 table {
     table-layout: fixed;
-    font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
@@ -53,10 +44,6 @@ td, th {
 .game-board td:nth-child(1) {
      width: 100%;
 }
-
-/*.game-board td:nth-child(2) {
-     width: 20%;
-}*/
 
 /* Guess boxes: white, green, red */
 .out-white, .out-green, .out-red {
@@ -70,7 +57,7 @@ td, th {
 }
 
 .out-white {
-    background-color: #ecf0f1;
+    background-color: #BFBFBF;
 }
 
 .out-green {
@@ -80,10 +67,23 @@ td, th {
 .out-red {
     background-color: #e74c3c;
 }
-/* How to play div */
+
+/* How-to-play div */
 .how-to-play-descp {
     display: none;
+    background-color: #446CB3;
+    padding: 25px;
+    border-radius: 10px;
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+    width: 50%;
+}
 
+.how-to-code-sequence, .how-to-your-guess {
+    border: 1px solid;
+    border-radius: 7px;
 }
 
 /* Input elements */
@@ -91,13 +91,52 @@ input[id^='guess'] {
     font-size: 24px;
     width: 67px;
     height: 23px;
-    margin-right: 5px;
-    border: 1px solid #ccc;
+    margin-right: 13px;
+    border: 1px solid #BFBFBF;
     border-radius: 7px;
     text-align: center;
     vertical-align: middle;
+    background-color: #BFBFBF;
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
 }
 
 input:focus {
     outline: none;
+}
+
+/* Game controllers */
+.game-functions {
+    margin-top: 10px;
+    font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+}
+
+.how-to-play {
+    float: left;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 19px;
+    font-weight: bold;
+    color: #336E7B;
+}
+
+.controller {
+    float: right;
+    display: inline;
+}
+
+.button {
+    background: #95a5a6;
+    border-radius: 7px;
+    padding: 5px;
+    user-select: none;
+    box-shadow: 0 5px 5px -4px rgba(0,0,0,0.8);
+}
+
+.controller .button:hover {
+    cursor: pointer;
+}
+
+.controller .button:active {
+    position: relative;
+    top: 5px;
 }
