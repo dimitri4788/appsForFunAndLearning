@@ -1,6 +1,11 @@
+/* Remove underline for all anchors */
+a {
+    text-decoration: none;
+}
+
 /* Whole container */
 #container {
-    width: 450px;
+    width: 188px;
     height: 600px;
     margin: auto;
     border: 0px solid #ce8e68;
@@ -12,7 +17,7 @@
 
 /* Game title */
 #game-title-box {
-    width: 100%;
+    width: 80px;
     height: 600px;
     background-color: #67d8aa;
     color: #c0dfd9;
@@ -23,13 +28,14 @@
 #game-title {
     float: right;
     position: relative;
-    top: -105px;
+    top: -85px;
     left: 2px;
     transform: rotate(-90deg);
     transform-origin: 100% 100%;
     letter-spacing: 8px;
     font-size: 87px;
     font-family: "Courier New", Courier, monospace;
+    line-height: 80px;
 }
 
 /* Game table */
@@ -41,24 +47,26 @@ table {
 }
 
 td, th {
-    border: 1px solid #dddddd;
+    border: 0px solid #dddddd;
 }
 
 .game-board td:nth-child(1) {
-     width: 60%;
+     width: 100%;
 }
 
-.game-board td:nth-child(3) {
-     width: 40%;
-}
+/*.game-board td:nth-child(2) {
+     width: 20%;
+}*/
 
 /* Guess boxes: white, green, red */
 .out-white, .out-green, .out-red {
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 23px;
+    height: 23px;
     border: none;
     margin-right: 2px;
+    border-radius: 50%;
+    vertical-align: middle;
 }
 
 .out-white {
@@ -71,4 +79,25 @@ td, th {
 
 .out-red {
     background-color: #e74c3c;
+}
+/* How to play div */
+.how-to-play-descp {
+    display: none;
+
+}
+
+/* Input elements */
+input[id^='guess'] {
+    font-size: 24px;
+    width: 67px;
+    height: 23px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+input:focus {
+    outline: none;
 }
