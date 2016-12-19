@@ -4,18 +4,6 @@ a {
     color: #2c3e50;
 }
 
-/* Whole container */
-#container {
-    width: 188px;
-    height: 610px;
-    margin: auto;
-    border: 0px solid #ce8e68;
-    border-radius: 7px;
-    padding: 10px;
-    text-align: center;
-    background: #ce8e68;
-}
-
 /* Game title */
 #game-title-box {
     width: 208px;
@@ -28,6 +16,62 @@ a {
     letter-spacing: 3px;
     font-size: 29px;
     font-family: "Courier New", Courier, monospace;
+}
+
+.game-help, .controller {
+    width: 208px;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+}
+
+.how-to-play {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #336E7B;
+}
+
+/* Game controllers */
+.controller {
+    width: 140px;
+    padding: 0;
+}
+
+.button {
+    display: inline-block;
+    font-size: 15px;
+    width: 55px;
+    background: #95a5a6;
+    border-radius: 7px;
+    padding: 5px;
+    user-select: none;
+    box-shadow: 0 5px 5px -4px rgba(0,0,0,0.8);
+}
+
+.controller .button:hover {
+    cursor: pointer;
+}
+
+.controller .button:active {
+    position: relative;
+    top: 3px;
+}
+
+/* Whole container */
+#container {
+    clear: both;
+    width: 188px;
+    height: 582px;
+    margin: auto;
+    border: 0px solid #ce8e68;
+    border-radius: 7px;
+    padding: 10px;
+    text-align: center;
+    background: #ce8e68;
 }
 
 /* Game board */
@@ -68,8 +112,8 @@ td, th {
     background-color: #e74c3c;
 }
 
-/* How-to-play div */
-.how-to-play-descp {
+/* How-to-play description */
+.how-to-play-descp, .game-finish-dialog {
     display: none;
     background-color: #446CB3;
     padding: 25px;
@@ -78,10 +122,10 @@ td, th {
     font-weight: bold;
     text-align: center;
     margin: auto;
-    width: 50%;
+    width: 40%;
 }
 
-.how-to-code-sequence, .how-to-your-guess {
+.how-to-code-sequence, .how-to-your-guess, .game-number {
     border: 1px solid;
     border-radius: 7px;
 }
@@ -104,39 +148,6 @@ input:focus {
     outline: none;
 }
 
-/* Game controllers */
-.game-functions {
-    margin-top: 10px;
-    font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
-}
-
-.how-to-play {
-    float: left;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-size: 19px;
-    font-weight: bold;
-    color: #336E7B;
-}
-
-.controller {
-    float: right;
-    display: inline;
-}
-
-.button {
-    background: #95a5a6;
-    border-radius: 7px;
-    padding: 5px;
-    user-select: none;
-    box-shadow: 0 5px 5px -4px rgba(0,0,0,0.8);
-}
-
-.controller .button:hover {
-    cursor: pointer;
-}
-
-.controller .button:active {
-    position: relative;
-    top: 5px;
+input:enabled {
+    background-color: #FFF;
 }

@@ -16,6 +16,17 @@
             MASTERMIND
         </header>
 
+        <!-- Help link -->
+        <div class="game-help">
+            <a href="#" class="how-to-play">How to play?</a>
+        </div>
+
+        <!-- Game controllers -->
+        <div class="controller">
+            <div class="resume-game button">RESUME</div>
+            <div class="reset-game button">RESET</div>
+        </div>
+
         <!-- Main game container -->
         <div id="container">
             <!-- Game board -->
@@ -23,28 +34,45 @@
                 <tr>
                     <td>
                         <table class="inner-input-table">
+                            <tr><td><form id="user-guess"><input id="guess20" type="text" value="0000" maxlength="4" pattern="[0-9]{4}" required disabled><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span></form></td></tr>
+                            <tr><td><form id="user-guess"><input id="guess19" type="text" value="0000" maxlength="4" pattern="[0-9]{4}" required disabled><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span></form></td></tr>
+                            <tr><td><form id="user-guess"><input id="guess18" type="text" value="0000" maxlength="4" pattern="[0-9]{4}" required disabled><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span></form></td></tr>
+                            <tr><td><form id="user-guess"><input id="guess17" type="text" value="0000" maxlength="4" pattern="[0-9]{4}" required disabled><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span></form></td></tr>
+                            <tr><td><form id="user-guess"><input id="guess16" type="text" value="0000" maxlength="4" pattern="[0-9]{4}" required disabled><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span></form></td></tr>
+                            <tr><td><form id="user-guess"><input id="guess15" type="text" value="0000" maxlength="4" pattern="[0-9]{4}" required disabled><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span></form></td></tr>
+                            <tr><td><form id="user-guess"><input id="guess14" type="text" value="0000" maxlength="4" pattern="[0-9]{4}" required disabled><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span></form></td></tr>
+                            <tr><td><form id="user-guess"><input id="guess13" type="text" value="0000" maxlength="4" pattern="[0-9]{4}" required disabled><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span></form></td></tr>
+                            <tr><td><form id="user-guess"><input id="guess12" type="text" value="0000" maxlength="4" pattern="[0-9]{4}" required disabled><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span></form></td></tr>
+                            <tr><td><form id="user-guess"><input id="guess11" type="text" value="0000" maxlength="4" pattern="[0-9]{4}" required disabled><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span></form></td></tr>
+                            <tr><td><form id="user-guess"><input id="guess10" type="text" value="0000" maxlength="4" pattern="[0-9]{4}" required disabled><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span></form></td></tr>
+                            <tr><td><form id="user-guess"><input id="guess9" type="text" value="0000" maxlength="4" pattern="[0-9]{4}" required disabled><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span></form></td></tr>
+                            <tr><td><form id="user-guess"><input id="guess8" type="text" value="0000" maxlength="4" pattern="[0-9]{4}" required disabled><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span></form></td></tr>
+                            <tr><td><form id="user-guess"><input id="guess7" type="text" value="0000" maxlength="4" pattern="[0-9]{4}" required disabled><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span></form></td></tr>
+                            <tr><td><form id="user-guess"><input id="guess6" type="text" value="0000" maxlength="4" pattern="[0-9]{4}" required disabled><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span></form></td></tr>
+                            <tr><td><form id="user-guess"><input id="guess5" type="text" value="0000" maxlength="4" pattern="[0-9]{4}" required disabled><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span></form></td></tr>
+                            <tr><td><form id="user-guess"><input id="guess4" type="text" value="0000" maxlength="4" pattern="[0-9]{4}" required disabled><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span></form></td></tr>
+                            <tr><td><form id="user-guess"><input id="guess3" type="text" value="0000" maxlength="4" pattern="[0-9]{4}" required disabled><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span></form></td></tr>
+                            <tr><td><form id="user-guess"><input id="guess2" type="text" value="0000" maxlength="4" pattern="[0-9]{4}" required disabled><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span></form></td></tr>
+                            <tr><td><form id="user-guess"><input id="guess1" type="text" value="0000" maxlength="4" pattern="[0-9]{4}" required disabled><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span><span class="out-white">&nbsp;</span></form></td></tr>
                         </table>
                     </td>
                 </tr>
             </table>
-
-
-            <div class="game-functions">
-                <a href="#" class="how-to-play">How?</a>
-                <div class="controller">
-                    <span class="start-game button">START</span>
-                    <span class="reset-game button">RESET</span>
-                </div>
-            </div>
         </div>
 
         <!-- Game description -->
         <div class="how-to-play-descp">
-            <p>This is a classic <a target="_blank" href="https://en.wikipedia.org/wiki/Mastermind_(board_game)">Mastermind Game</a>.
+            <p>This is a classic <a target="_blank" href="https://en.wikipedia.org/wiki/Mastermind_(board_game)">Mastermind Game</a>.</p>
             <p>The objective of the game is to guess a 4-digit number.</p>
             <p>For each of your guess that is the correct number and in the correct position in the code sequence, the game displays a green color on the right side of the current guess.</p>
             <p>For each of your guess that is the correct number but is NOT in the correct position in the code sequence, the game displays a red color on the right side of the current guess.</p>
-            <p>For example: if the code sequence is <span class="how-to-code-sequence">3425</span>, and your guess is <span class="how-to-your-guess">4395</span>, then the game will display <span class="out-green">&nbsp;</span><span class="out-red">&nbsp;</span><span class="out-red">&nbsp;</span><span class="out-white">&nbsp;</span></p>
+            <p>For example: if the code sequence is <span class="how-to-code-sequence">3421</span>, and your guess is <span class="how-to-your-guess">4341</span>, then the game will display <span class="out-green">&nbsp;</span><span class="out-red">&nbsp;</span><span class="out-red">&nbsp;</span><span class="out-white">&nbsp;</span></p>
+            <p>Press enter to guess.</p>
+        </div>
+
+        <!-- Game finish dialog -->
+        <div class="game-finish-dialog">
+            <p>You <span class="game-result-string"></span> to guess the number. The number was: <span class="game-number"></span></p>
         </div>
 
         <!-- Add the app.js script -->
