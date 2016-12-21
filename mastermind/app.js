@@ -97,7 +97,7 @@
             //Enter keyup should read the entered guess
             $(document).keyup(function(event) {
                 //Check for enter key (code: 13) pressed
-                if(event.which === 13) {
+                if(event.which === 16) {
                     //Get the guessed number
                     var $currInputField =  $("#guess" + controller.getLastGuessCounter());
                     if($currInputField.is(":invalid")) {
