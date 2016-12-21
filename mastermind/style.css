@@ -128,6 +128,7 @@ td, th {
 .how-to-code-sequence, .how-to-your-guess, .game-number {
     border: 1px solid;
     border-radius: 7px;
+    padding: 2px;
 }
 
 /* Input elements */
@@ -158,6 +159,5 @@ input:enabled {
     border-radius: 7px;
     padding: 2px;
     text-transform: uppercase;
-    text-decoration: underline;
     font-weight: bold;
 }

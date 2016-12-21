@@ -1,7 +1,8 @@
 (function($, window, document) {
     var model = {
         number: "",
-        lastGuessCounter: 0
+        lastGuessCounter: 0,
+        gameState: "" /* going or done */
     };
 
     var controller = {
@@ -20,14 +21,24 @@
             return model.lastGuessCounter;
         },
 
-        //Returns the last guess counter from the model
-        setLastGuessCounter: function(counter) {
-            model.lastGuessCounter = counter;
+        //Returns the game state
+        getGameState: function() {
+            return model.gameState;
         },
 
         //Generate random number
         generateNewNumber: function() {
             model.number = (Math.random()).toString().slice(2,6);
+        },
+
+        //Returns the last guess counter from the model
+        setLastGuessCounter: function(counter) {
+            model.lastGuessCounter = counter;
+        },
+
+        //Returns the last guess counter from the model
+        setGameState: function(state) {
+            model.gameState = state;
         },
 
         checkGuessedNumber: function(guessedNumber) {
@@ -45,7 +56,7 @@
                 }
             });
 
-            //Loop over again to check for the correct number but at incorrect position
+            //Loop over again to check for the correct numbers that are at incorrect position
             correctNumberArr.forEach(function(value, index) {
                 var indexOfNumberAtIncorrectPosition = correctNumberArr.indexOf(userNumberArr[index]);
                 if(indexOfNumberAtIncorrectPosition >= 0) {
@@ -59,6 +70,8 @@
     };
 
     var view = {
+        output: [],
+
         //Initialize the view
         init: function() {
             this.initializeGame();
@@ -70,12 +83,14 @@
 
             //Handle resume click event
             $(".resume-game").click(function() {
+                if(controller.getLastGuessCounter() === 20 || (controller.getGameState() === "done")) {
+                    view.initializeGame();
+                }
                 view.showBoard();
             });
 
             //Handle reset game click event
             $(".reset-game").click(function() {
-                view.showBoard();
                 view.initializeGame();
             });
 
@@ -91,19 +106,20 @@
 
                     //Get the user's guessed number and check if it was correct or not
                     var guessedNumber = $currInputField.val();
-                    var checkedOutputArray = controller.checkGuessedNumber(guessedNumber);
+                    view.output = controller.checkGuessedNumber(guessedNumber);
 
                     //Disable current input field
                     $currInputField.prop("disabled", true);
 
                     //Check if user guessed the number or not
-                    if(checkedOutputArray[0] === 4) {
+                    if(view.output[0] === 4) {
+                        controller.setGameState("done");
                         view.showGameFinished("succeeded");
                     }
                     else if(controller.getLastGuessCounter() === 20) {
                         view.showGameFinished("failed");
                     }
-                    else if(checkedOutputArray[0] !== 4 && controller.getLastGuessCounter() < 20) {
+                    else if(view.output[0] !== 4 && controller.getLastGuessCounter() < 20) {
                         view.updateBoard();
                     }
                 }
@@ -114,8 +130,13 @@
         initializeGame: function() {
             controller.generateNewNumber();
             controller.setLastGuessCounter(1);
+            controller.setGameState("going");
             $("input[id^='guess']").val("0000");
             $("input[id^='guess']").prop("disabled", true);
+            $("form[id^='user-guess']" + " span").removeClass(function(index, css) {
+                return (css.match(/\out-\S+/g) || []).join(' ');
+            });
+            $("form[id^='user-guess']" + " span").addClass("out-white");
             $("#guess" + controller.getLastGuessCounter()).prop("disabled", false);
             view.showBoard();
         },
@@ -136,14 +157,40 @@
             $(".how-to-play-descp").show()
         },
 
+        //Show color codes (guess feedback) on board
+        showGuessFeedback: function() {
+            var green = view.output[0];
+            var red = view.output[1];
+
+            //The form's span children are numbered: 2, 3, 4, and 5, since the first child is the input element
+            var i = 2;
+            while(green) {
+                var nthSpanChildOfForm = $("#user-guess" + controller.getLastGuessCounter() + " span:nth-child(" + i + ")");
+                nthSpanChildOfForm.removeClass("out-white");
+                nthSpanChildOfForm.addClass("out-green");
+                i += 1;
+                green -= 1;
+            }
+
+            while(red) {
+                nthSpanChildOfForm = $("#user-guess" + controller.getLastGuessCounter() + " span:nth-child(" + i + ")");
+                nthSpanChildOfForm.removeClass("out-white");
+                nthSpanChildOfForm.addClass("out-red");
+                i += 1;
+                red -= 1;
+            }
+        },
+
         //Update the board
         updateBoard: function() {
+            view.showGuessFeedback();
             controller.setLastGuessCounter(controller.getLastGuessCounter() + 1);
             this.showBoard();
         },
 
         //Show game finished message
         showGameFinished: function(message) {
+            view.showGuessFeedback();
             $("#container").hide()
             $(".game-result-string").text(message);
             $(".game-number").text(controller.getNumber());
