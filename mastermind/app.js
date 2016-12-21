@@ -131,8 +131,7 @@
             controller.generateNewNumber();
             controller.setLastGuessCounter(1);
             controller.setGameState("going");
-            $("input[id^='guess']").val("0000");
-            $("input[id^='guess']").prop("disabled", true);
+            $("input[id^='guess']").val("0000").prop("disabled", true);
             $("form[id^='user-guess']" + " span").removeClass(function(index, css) {
                 return (css.match(/\out-\S+/g) || []).join(' ');
             });
@@ -146,7 +145,7 @@
             $(".how-to-play-descp").hide()
             $(".game-finish-dialog").hide();
             $("#container").show()
-            $("#guess" + controller.getLastGuessCounter()).prop("disabled", false);
+            $("#guess" + controller.getLastGuessCounter()).prop("disabled", false).val("");
             $("#guess" + controller.getLastGuessCounter()).focus();
         },
 

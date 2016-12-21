@@ -5,5 +5,6 @@ Mastermind Game
 
 Screenshot
 ----------
-![](images/appImage.png)
+![](images/appImage1.png)
 ![](images/appImage2.png)
+![](images/appImage3.png)
