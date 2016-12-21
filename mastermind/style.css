@@ -18,7 +18,7 @@ a {
     font-family: "Courier New", Courier, monospace;
 }
 
-.game-help, .controller {
+.game-help, .buttons {
     width: 208px;
     margin: auto;
     margin-top: 5px;
@@ -36,7 +36,7 @@ a {
 }
 
 /* Game controllers */
-.controller {
+.buttons {
     width: 140px;
     padding: 0;
 }
@@ -52,11 +52,11 @@ a {
     box-shadow: 0 5px 5px -4px rgba(0,0,0,0.8);
 }
 
-.controller .button:hover {
+.buttons .button:hover {
     cursor: pointer;
 }
 
-.controller .button:active {
+.buttons .button:active {
     position: relative;
     top: 3px;
 }
@@ -150,4 +150,14 @@ input:focus {
 
 input:enabled {
     background-color: #FFF;
+}
+
+/* Final succeeded or failed string */
+.game-result-string {
+    background-color: #67d8aa;
+    border-radius: 7px;
+    padding: 2px;
+    text-transform: uppercase;
+    text-decoration: underline;
+    font-weight: bold;
 }
