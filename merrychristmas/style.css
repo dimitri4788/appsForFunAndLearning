@@ -1,0 +1,28 @@
+body {
+    background: #9e121a;
+    margin: auto;
+}
+
+h2 {
+    position: relative;
+    top: -110px;
+    text-align: center;
+    font-size: 6em;
+    font-family: "Mountains of Christmas";
+    letter-spacing: 0.3em;
+    color: #4d8e4c; /* Since -webkit-text-fill-color is a non-standard feature, so non-webkit browsers will use this color */
+    -webkit-text-fill-color: transparent;
+    background: -webkit-linear-gradient(90deg, #1f3c42 0%, #31625c 20%, #478462 40%, #488935 60%, #7ea633 80%, #9ee948 100%); /* Chrome, Safari, newer versions of Opera */
+    background: -o-linear-gradient(90deg, #1f3c42 0%, #31625c 20%, #478462 40%, #488935 60%, #7ea633 80%, #9ee948 100%); /* older versions of Opera */
+    -webkit-background-clip: text;
+}
+
+#bulbs-hanging-wire {
+    position: relative;
+    top: 20px;
+    text-align: center;
+    white-space: nowrap;
+    padding: 0;
+    width: 100%;
+    border-top: 2px solid #000;
+}

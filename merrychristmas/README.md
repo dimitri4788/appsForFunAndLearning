@@ -1,7 +1,7 @@
 Merry Christmas
 ===============
 
-[Play the Game](https://merrychristmas.herokuapp.com)
+[Click me to enjoy Christmas](https://merrychristmas.herokuapp.com)
 
 Screenshot
 ----------
