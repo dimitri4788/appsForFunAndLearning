@@ -110,11 +110,42 @@ h2 {
     }
 }
 
+/* Music buttons */
+#music-pics-container {
+    position: relative;
+    top: -50px;
+    text-align: center;
+    margin: auto;
+}
+
+button {
+    border: 3px solid #007600;
+    border-radius: 8px;
+    background-color: #007600;
+    padding: 8px;
+    margin-right: 10px;
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    box-shadow: 5px 5px 10px #000;
+    cursor: pointer;
+}
+
+button:active {
+    position: relative;
+    top: 5px;
+}
+
+button:focus {
+    outline: none;
+}
+
 /* Memes automatic slider */
 .meme-slider {
     border: 0px solid #000;
     background-color: #cb1605;
     position: relative;
+    top: -10px;
     width: 540px;
     height: 350px;
     margin: auto;
@@ -133,4 +164,18 @@ h2 {
 
 .meme-slider .meme-initial {
     display: inline-block;
+}
+
+/* Tree */
+.tree-left {
+    float: left;
+}
+
+.tree-right {
+    float: right;
+}
+
+.tree .christmas-tree {
+    width: 300px;
+    height: 500px;
 }
