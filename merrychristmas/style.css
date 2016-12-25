@@ -1,14 +1,16 @@
 body {
-    background: #9e121a;
+    background: #cb1605;
     margin: auto;
 }
 
+/* Merry Christmas heading */
 h2 {
     position: relative;
-    top: -110px;
+    top: -4px;
     text-align: center;
     font-size: 6em;
     font-family: "Mountains of Christmas";
+    font-weight: bolder;
     letter-spacing: 0.3em;
     color: #4d8e4c; /* Since -webkit-text-fill-color is a non-standard feature, so non-webkit browsers will use this color */
     -webkit-text-fill-color: transparent;
@@ -17,12 +19,118 @@ h2 {
     -webkit-background-clip: text;
 }
 
+/* Bulb hanging wire: ul */
 #bulbs-hanging-wire {
-    position: relative;
+    position: absolute;
     top: 20px;
     text-align: center;
     white-space: nowrap;
     padding: 0;
     width: 100%;
-    border-top: 2px solid #000;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    height: 1px;
+}
+
+/* Each bulb: li */
+#bulbs-hanging-wire li {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    margin: 0px 10px;
+    padding: 0;
+    list-style: none;
+    width: 10px;
+    height: 20px;
+    border-radius: 20%;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-iteration-count:infinite;
+}
+
+/* Screw/connector to hold the bulbs on the wire */
+#bulbs-hanging-wire li:before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 6px;
+    border-radius: 2px;
+    top: -4px;
+    left: 1px;
+    background: #444;
+}
+
+/* Animation for even position bulbs */
+#bulbs-hanging-wire li:nth-child(even) {
+    animation-name: even-bulbs-animation;
+}
+
+/* Animation for odd position bulbs */
+#bulbs-hanging-wire li:nth-child(odd) {
+    animation-name: odd-bulbs-animation;
+}
+
+/* Animation for (4n+2) position bulbs */
+#bulbs-hanging-wire li:nth-child(4n+2) {
+    animation-name: even-bulbs-animation-2;
+}
+
+/* Animation code for even bulbs */
+@keyframes even-bulbs-animation {
+    0%, 100% {
+        background: rgba(247, 0, 148, 1);
+        box-shadow: 0px 2px 20px 4px rgba(247, 0, 148, 1);
+    }
+    50% {
+        background: rgba(247,0,148,0.5);
+        box-shadow: 0px 2px 20px 4px rgba(247, 0, 148, 0.3);
+    }
+}
+/* Animation code for odd bulbs */
+@keyframes odd-bulbs-animation {
+    50% {
+        background: rgba(0, 255, 255, 1);
+        box-shadow: 0px 2px 20px 4px rgba(0, 255, 255,1);
+    }
+    0%,100% {
+        background: rgba(0, 255, 255, 0.5);
+        box-shadow: 0px 2px 20px 4px rgba(0, 255, 255, 0.3);
+    }
+}
+
+/* Animation code for (4n+2) bulbs */
+@keyframes even-bulbs-animation-2 {
+    0%, 100% {
+        background: rgba(255, 230, 65, 1);
+        box-shadow: 0px 2px 20px 4px rgba(255, 230, 65, 1);
+    }
+    50% {
+        background: rgba(255, 230, 65, 0.5);
+        box-shadow: 0px 2px 20px 4px rgba(255, 230, 65, 0.3);
+    }
+}
+
+/* Memes automatic slider */
+.meme-slider {
+    border: 0px solid #000;
+    background-color: #cb1605;
+    position: relative;
+    width: 540px;
+    height: 350px;
+    margin: auto;
+}
+
+.slider-image {
+    width: 540px;
+    height: 350px;
+    border-radius: 17px;
+}
+
+.meme-slider div {
+    display: inline-block;
+    display: none;
+}
+
+.meme-slider .meme-initial {
+    display: inline-block;
 }
