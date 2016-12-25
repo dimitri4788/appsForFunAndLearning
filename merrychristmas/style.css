@@ -119,9 +119,9 @@ h2 {
 }
 
 button {
-    border: 3px solid #007600;
+    border: 3px solid #7ea633;
     border-radius: 8px;
-    background-color: #007600;
+    background-color: #7ea633;
     padding: 8px;
     margin-right: 10px;
     font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
@@ -140,30 +140,28 @@ button:focus {
     outline: none;
 }
 
-/* Memes automatic slider */
-.meme-slider {
-    border: 0px solid #000;
-    background-color: #cb1605;
+.button-default {
+    border: 3px solid #007600;
+    background-color: #007600;
+}
+
+/* Main container for memes and trees */
+.main-container {
     position: relative;
-    top: -10px;
-    width: 540px;
-    height: 350px;
-    margin: auto;
+    top: -40px;
+    width: 100%;
 }
 
-.slider-image {
-    width: 540px;
-    height: 350px;
-    border-radius: 17px;
+.main-container div {
+    vertical-align: middle;
+    text-align: center;
+    display: table-cell;
 }
 
-.meme-slider div {
-    display: inline-block;
-    display: none;
-}
-
-.meme-slider .meme-initial {
-    display: inline-block;
+.clearfix {
+    content: "";
+    clear: both;
+    display: table;
 }
 
 /* Tree */
@@ -178,4 +176,32 @@ button:focus {
 .tree .christmas-tree {
     width: 300px;
     height: 500px;
+    position: relative;
+    top: -25px;
+}
+
+/* Memes automatic slider */
+.meme-slider {
+    border: 0px solid #000;
+    background-color: #cb1605;
+    width: 540px;
+    height: 350px;
+    margin: auto;
+}
+
+.slider-image {
+    width: 540px;
+    height: 350px;
+    border-radius: 17px;
+    position: relative;
+    top: -25px;
+}
+
+.meme-slider div {
+    display: inline-block;
+    display: none;
+}
+
+.meme-slider .meme-initial {
+    display: inline-block;
 }
