@@ -1,8 +1,8 @@
 Merry Christmas
 ===============
 
-[Click me to enjoy Christmas](https://merrychristmas.herokuapp.com)
+[Click here for Merry Christmas](https://mychristmas2016.herokuapp.com/)
 
 Screenshot
 ----------
-![](images/appImage.png)
+![](resources/images/appImage.png)
