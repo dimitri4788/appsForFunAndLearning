@@ -1,90 +1,80 @@
 ﻿(function($, window, document) {
     //This function automatically slides memes
-    var musicPlayer = {
-        audioElement1: "",
-        audioElement2: "",
-        audioElement3: "",
-        audioElement4: "",
-        audioElement5: "",
-        currAudioElement: "",
+    function MusicPlayer() {
+        //Set initial MusicPlayer audio properties
+        this.audioElement1 = document.createElement("audio");
+        this.audioElement2 = document.createElement("audio");
+        this.audioElement3 = document.createElement("audio");
+        this.audioElement4 = document.createElement("audio");
+        this.audioElement5 = document.createElement("audio");
+        this.audioElement1.setAttribute("src", "resources/audio/jingle-bell-piano_1.mp3");
+        this.audioElement2.setAttribute("src", "resources/audio/deck-the-halls_2.mp3");
+        this.audioElement3.setAttribute("src", "resources/audio/joy-to-the-world_3.mp3");
+        this.audioElement4.setAttribute("src", "resources/audio/carol-of-the-bells_4.mp3");
+        this.audioElement5.setAttribute("src", "resources/audio/we-wish-you-a-merry-christmas_5.mp3");
 
-        //Initiate a new music player
-        init: function() {
-            //Initialize audio elements
-            this.audioElement1 = document.createElement("audio");
-            this.audioElement2 = document.createElement("audio");
-            this.audioElement3 = document.createElement("audio");
-            this.audioElement4 = document.createElement("audio");
-            this.audioElement5 = document.createElement("audio");
-            this.audioElement1.setAttribute("src", "resources/audio/jingle-bell-piano_1.mp3");
-            this.audioElement2.setAttribute("src", "resources/audio/deck-the-halls_2.mp3");
-            this.audioElement3.setAttribute("src", "resources/audio/joy-to-the-world_3.mp3");
-            this.audioElement4.setAttribute("src", "resources/audio/carol-of-the-bells_4.mp3");
-            this.audioElement5.setAttribute("src", "resources/audio/we-wish-you-a-merry-christmas_5.mp3");
+        //Set audioElement1 as the default element
+        this.currAudioElement = this.audioElement1;
+    }
 
-            //Set audioElement1 as the default element
-            this.currAudioElement = this.audioElement1;
-        },
+    //This method gets all the audio properties of MusicPlayer
+    MusicPlayer.prototype.getAllAudioElements = function() {
+        return [this.audioElement1, this.audioElement2, this.audioElement3, this.audioElement4, this.audioElement5];
+    }
 
-        //Get all audio elements
-        getAllAudioElements: function() {
-            return [this.audioElement1, this.audioElement2, this.audioElement3, this.audioElement4, this.audioElement5];
-        },
+    //This method gets current audio element
+    MusicPlayer.prototype.getCurrAudioElement = function(element) {
+        return this.currAudioElement;
+    }
 
-        //Get current audio element
-        getCurrAudioElement: function(element) {
-            return this.currAudioElement;
-        },
+    //This method sets current audio element
+    MusicPlayer.prototype.setCurrAudioElement = function(element) {
+        this.currAudioElement = element;
+    }
 
-        //Set current audio element
-        setCurrAudioElement: function(element) {
-            this.currAudioElement = element;
-        },
+    //This method plays the audio
+    MusicPlayer.prototype.playMusic = function() {
+        this.currAudioElement.play();
+    }
 
-        //Play the current audio
-        playMusic: function() {
-            this.currAudioElement.play();
-        },
-
-        //Pause the current audio
-        pauseMusic: function() {
-            this.currAudioElement.pause();
-        }
-    };
+    //This method pauses the current audio
+    MusicPlayer.prototype.pauseMusic = function() {
+        this.currAudioElement.pause();
+    }
 
     //This function automatically slides memes
-    function memeSlider() {
-        var currMemeIndex = 0,
-        allMemesDivs = $(".meme-slider div"),
-        numOfMemes = allMemesDivs.length;
+    function MemeSlider() {
+        //Set initial MemeSlider properties
+        this.currMemeIndex = 0;
+        this.allMemesDivs = $(".meme-slider div");
+        this.numOfMemes = this.allMemesDivs.length;
+    }
 
-        function showMeme() {
-            //Get the current meme div
-            var currMemeDiv = $(".meme-slider div").eq(currMemeIndex);
-
-            //Hide all the memes divs
-            allMemesDivs.hide();
-
-            //Display the current meme
-            currMemeDiv.css("display","inline-block");
-        }
-
+    MemeSlider.prototype.startMemeSlider = function() {
         //Automatically rotate between the memes every 3 seconds
+        var that = this;
         setInterval(function() {
-            currMemeIndex += 1;
-            if(currMemeIndex > (numOfMemes - 1)) {
-                currMemeIndex = 0;
+            //3 seconds are over, show the next meme
+            that.currMemeIndex += 1;
+            if(that.currMemeIndex > (that.numOfMemes - 1)) {
+                that.currMemeIndex = 0;
             }
 
-            //3 seconds are over, show the next meme
-            showMeme();
+            //Get the current meme div
+            var currMemeDiv = $(".meme-slider div").eq(that.currMemeIndex);
+
+            //Hide all the memes divs
+            that.allMemesDivs.hide();
+
+            //Display the current meme
+            currMemeDiv.css("display", "inline-block");
         }, 3000);
     }
 
     //Magic starts here
     function main() {
-        //Initiate a new music player
-        musicPlayer.init();
+        //Create a new MusicPlayer object
+        var musicPlayer = new MusicPlayer();
 
         //Play current audio file
         musicPlayer.playMusic();
@@ -126,8 +116,9 @@
             musicPlayer.playMusic();
         });
 
-        //Call the memes slider
-        memeSlider();
+        //Create a new MemeSlider object
+        var memeSlider = new MemeSlider();
+        memeSlider.startMemeSlider();
     }
 
     //When document is ready, start the magic
