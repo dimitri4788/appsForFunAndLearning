@@ -71,6 +71,11 @@
         }, 3000);
     }
 
+    //Remove the class "button-default" from all the buttons
+    function removeClassButtonDefaultClass() {
+        $(":button").removeClass("button-default");
+    }
+
     //Magic starts here
     function main() {
         //Create a new MusicPlayer object
@@ -81,35 +86,35 @@
 
         //Create button click event handlers to play music
         $("#button-one").click(function() {
-            $(":button").removeClass("button-default");
+            removeClassButtonDefaultClass();
             $(this).addClass("button-default");
             musicPlayer.pauseMusic();
             musicPlayer.setCurrAudioElement(musicPlayer.audioElement1);
             musicPlayer.playMusic();
         });
         $("#button-two").click(function() {
-            $(":button").removeClass("button-default");
+            removeClassButtonDefaultClass();
             $(this).addClass("button-default");
             musicPlayer.pauseMusic();
             musicPlayer.setCurrAudioElement(musicPlayer.audioElement2);
             musicPlayer.playMusic();
         });
         $("#button-three").click(function() {
-            $(":button").removeClass("button-default");
+            removeClassButtonDefaultClass();
             $(this).addClass("button-default");
             musicPlayer.pauseMusic();
             musicPlayer.setCurrAudioElement(musicPlayer.audioElement3);
             musicPlayer.playMusic();
         });
         $("#button-four").click(function() {
-            $(":button").removeClass("button-default");
+            removeClassButtonDefaultClass();
             $(this).addClass("button-default");
             musicPlayer.pauseMusic();
             musicPlayer.setCurrAudioElement(musicPlayer.audioElement4);
             musicPlayer.playMusic();
         });
         $("#button-five").click(function() {
-            $(":button").removeClass("button-default");
+            removeClassButtonDefaultClass();
             $(this).addClass("button-default");
             musicPlayer.pauseMusic();
             musicPlayer.setCurrAudioElement(musicPlayer.audioElement5);
@@ -119,6 +124,9 @@
         //Create a new MemeSlider object
         var memeSlider = new MemeSlider();
         memeSlider.startMemeSlider();
+
+        //Start the snow-fall
+        startSnowfall();
     }
 
     //When document is ready, start the magic

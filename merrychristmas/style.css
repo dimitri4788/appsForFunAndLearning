@@ -205,3 +205,19 @@ button:focus {
 .meme-slider .meme-initial {
     display: inline-block;
 }
+
+/* Snow flakes */
+#snow-flakes-container {
+    position: absolute;
+    top: 0px;
+}
+
+.snow-flake {
+    position: fixed;
+    font-family: Cambria, Georgia, serif;
+    font-size: 15px;
+    color: #FFF;
+    user-select: none;
+    text-shadow: 0px 0px 15px #FFF;
+    z-index: 500;
+}
